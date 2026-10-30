@@ -1,5 +1,5 @@
 ---
-name: my-dev-digest
+name: weekly-digest
 description: Research, filter (80/20) and write the bilingual EN+VI "AI & Dev" digest (AI coding tools, LLM APIs, languages, frameworks, cloud, security) and optionally post to Slack. Use for the weekly run and asks like "run the digest", "tin tuần này", "dev news since Monday".
 ---
 

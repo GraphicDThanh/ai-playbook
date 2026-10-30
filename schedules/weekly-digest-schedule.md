@@ -1,6 +1,6 @@
-# ai-dev-digest-weekly
+# weekly-digest-schedule
 
-- **Skill:** [ai-dev-digest](../skills/ai-dev-digest/SKILL.md) @ 0.1.2
+- **Skill:** [weekly-digest](../skills/weekly-digest/SKILL.md) @ 0.1.2
 - **Platform:** TBD
 - **Schedule:** TBD (cron + timezone)
 - **Model:** TBD
@@ -8,7 +8,7 @@
 ## Prompt wrapper
 
 ```
-Run the "ai-dev-digest" skill with:
+Run the "weekly-digest" skill with:
 - MODE: SCHEDULED
 - WINDOW: previous Monday 00:00 → Sunday 23:59 (UTC+7)
 - PUBLISH: yes
@@ -20,4 +20,4 @@ If the skill cannot be loaded, stop and report FAILED: "skill not loaded" — do
 
 ## How to test
 
-TODO: manual run steps, compare output with `skills/ai-dev-digest/examples/`.
+TODO: manual run steps, compare output with `skills/weekly-digest/examples/`.
