@@ -1,0 +1,16 @@
+interface:
+  display_name: my dev digest
+  short_description: 'Research, filter (80/20) and write the "AI & Dev" news digest
+    for a full-stack team working with AI coding tools, .NET, TypeScript/Node, Python,
+    AWS/Azure and payment/identity vendors — English + Vietnamese — and optionally
+    publish to Slack #ai-news. Use for scheduled weekly runs and on-demand requests
+    like "run the digest", "tin tuần này", "dev news since Monday".'
+  icon_small: assets/icon.svg
+  icon_large: assets/icon.svg
+policy:
+  products:
+  - chatgpt
+  - codex
+  - api
+  - atlas
+  allow_implicit_invocation: true
