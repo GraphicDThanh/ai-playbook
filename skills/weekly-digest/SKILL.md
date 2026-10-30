@@ -1,6 +1,6 @@
 ---
 name: weekly-digest
-description: Research, filter (80/20) and write the bilingual EN+VI "AI & Dev" digest (AI coding tools, LLM APIs, languages, frameworks, cloud, security) and optionally post to Slack. Use for the weekly run and asks like "run the digest", "tin tuần này", "dev news since Monday".
+description: Friday comprehensive weekly digest (Mon-Fri). Bilingual EN+VI covering AI tools, models, languages, frameworks, security with agent-reach discovery. Pairs with Tuesday Pulse. ~$0.60/run = ~$2.40/month.
 ---
 
 # AI & Dev digest
@@ -10,7 +10,8 @@ You are the editor of "AI & Dev", a news digest for software engineers, product-
 ## 0. Config — the only part to edit when you share or reuse this skill
 
 - **Timezone:** Asia/Ho_Chi_Minh (UTC+7), for every date and window boundary
-- **Range label:** `Oct 26 – Nov 1, 2026`
+- **Run day:** Friday only (pairs with Tuesday Pulse)
+- **Range label:** `Oct 27-31, 2026` (Mon-Fri work week)
 - **Slack channel:** #dev-news, ID `C0CDJBYAXAM`
 - **Team focus** (optional — leave empty for the general digest). The company is replacing paid SaaS with in-house tools that each get Claude-style connectors, rebuilding its games portfolio, and building a collaboration platform for teams on Claude subscriptions. Areas that matter:
   - *Real-time communication:* chat (Slack-like), large video calls and live streaming (200+ participants), WebRTC/SFU, meeting transcription and AI notes
@@ -27,14 +28,16 @@ The team focus adjusts scoring (section 6), adds the "Team focus" sources in the
 
 Work out these values from the request (or the scheduled prompt) and state them on the first line of your output.
 
-| | SCHEDULED (started by a scheduled task) | ON_DEMAND (a person asking in chat) |
+| | SCHEDULED (Friday) | ON_DEMAND |
 |---|---|---|
-| WINDOW | the most recent *completed* Mon 00:00 → Sun 23:59 week | the 7 days ending now, unless the request names a range ("since Monday", "Oct 20–25", "last 3 days") |
-| Header | `🚀 *AI & DEV WEEKLY \| {range}*` | `⚡ *AI & DEV PULSE \| {range}*` |
+| WINDOW | Mon 00:00 → Fri 09:00 this week | Last Mon-Fri unless the request names a range ("this week", "Oct 27-31", "last 5 days") |
+| Header | `🚀 *AI & DEV WEEKLY \| {Mon-Fri range}*` | `⚡ *AI & DEV PULSE \| {range}*` |
 | PUBLISH | yes, without asking | no — return drafts; publish only if the request says "post" / "đăng lên Slack" |
 | FORMAT | slack | slack, or plain if they want to paste into Zalo/Teams/email; both if asked |
 
 `DRY_RUN` (any mode): do everything except posting. Treat "test", "dry run", "đừng đăng" as DRY_RUN.
+
+**Important:** If today is NOT Friday (for scheduled runs), skip and say "Friday weekly digest runs on Fridays only. Use tuesday-pulse for mid-week updates."
 
 ## 2. Relevance map
 
@@ -66,7 +69,10 @@ The default reader is a working software engineer on a mainstream stack (web, ba
 ## 3. Duplicate check (only when publishing, and only if a Slack tool is available)
 
 Read the last 20 messages in the configured channel. If one already has this exact header and range, stop with `SKIPPED_DUPLICATE` and its permalink — scheduled tasks can fire twice and a double post is noisy.
-For ON_DEMAND, if Slack is readable, note what the latest AI & DEV WEEKLY or PULSE in the channel covered (whoever posted it) and leave those stories out (say so), since the team has already seen them. A story can come back only with a new development, such as active exploitation or a new patch.
+
+**Check for Tuesday Pulse overlap:** If Slack is readable, check if Tuesday Pulse posted this week. If it covered a story (e.g., critical CVE), leave it out UNLESS there's a new development (active exploitation, new patch, KEV addition). Mention in log: "Skipped {item} — covered in Tuesday Pulse."
+
+For ON_DEMAND, note what the latest AI & DEV WEEKLY, PULSE, or TUESDAY PULSE covered and leave those stories out, since the team has already seen them. A story can come back only with a new development.
 
 ## 4. Research
 
